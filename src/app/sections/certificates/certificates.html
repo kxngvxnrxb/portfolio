@@ -1,0 +1,28 @@
+<section id="certificates" class="section">
+    <div class="container">
+        <p class="kicker">CERTIFICATES</p>
+        <h2>Certifications & Learning</h2>
+        <p class="muted intro">
+            Courses and certifications that support my technical skills and continuous learning.
+        </p>
+
+        <div class="grid cards-3">
+            <div class="card cert-card" *ngFor="let cert of certificates">
+
+                <a [href]="cert.file" target="_blank" class="cert-image">
+                    <img [src]="cert.file" [alt]="cert.title" />
+                </a>
+
+                <h3>{{ cert.title }}</h3>
+                <p class="muted">{{ cert.issuer }}</p>
+                <p class="small">{{ cert.year }}</p>
+
+                <a class="cert-link" [href]="cert.file" target="_blank">
+                    View Certificate →
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+</section>

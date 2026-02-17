@@ -1,0 +1,28 @@
+<header class="nav">
+    <div class="nav-inner container">
+        <a class="brand" (click)="scrollTo('home'); $event.preventDefault()" href="#home">
+            <span class="brand-mark">K</span>
+            <span class="brand-text">KING</span>
+        </a>
+
+        <nav class="links" [class.open]="menuOpen">
+            <a *ngFor="let item of items" [class.active]="activeId === item.id" href="#{{ item.id }}"
+                (click)="scrollTo(item.id); $event.preventDefault()">
+                {{ item.label }}
+            </a>
+        </nav>
+
+        <a class="btn primary" href="#contact" (click)="scrollTo('contact'); $event.preventDefault()">Let’s Talk</a>
+
+        <button class="burger" type="button" (click)="toggle()" aria-label="Open menu">
+            <svg *ngIf="!menuOpen" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" />
+            </svg>
+
+            <svg *ngIf="menuOpen" viewBox="0 0 24 24" aria-hidden="true">
+                <path fill="currentColor"
+                    d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3z" />
+            </svg>
+        </button>
+    </div>
+</header>

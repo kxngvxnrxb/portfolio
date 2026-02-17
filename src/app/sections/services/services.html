@@ -1,0 +1,16 @@
+<section id="services" class="section section--glow">
+    <div class="container">
+        <p class="kicker">SERVICES</p>
+        <h2>What I do</h2>
+        <p class="muted intro">
+            A simple list of what I can help you build.
+        </p>
+
+        <div class="grid cards-3">
+            <div class="card service" *ngFor="let s of services">
+                <h3>{{ s.title }}</h3>
+                <p class="muted">{{ s.description }}</p>
+            </div>
+        </div>
+    </div>
+</section>

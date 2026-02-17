@@ -1,0 +1,28 @@
+<section id="experience" class="section section--glow">
+    <div class="container">
+        <p class="kicker">EXPERIENCE</p>
+        <h2>Work Experience</h2>
+        <p class="muted intro">
+            Professional experience building web applications, integrating APIs, and working with real-world systems.
+        </p>
+
+        <div class="experience-list">
+            <div class="card experience-card" *ngFor="let exp of experiences">
+                <div class="exp-header">
+                    <h3>{{ exp.role }}</h3>
+                    <span class="period">{{ exp.period }}</span>
+                </div>
+
+                <div class="company muted">{{ exp.company }}</div>
+
+                <ul class="exp-bullets">
+                    <li *ngFor="let b of exp.bullets">{{ b }}</li>
+                </ul>
+
+                <div class="tech-tags">
+                    <span *ngFor="let t of exp.tech">{{ t }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

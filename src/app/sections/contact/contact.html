@@ -1,0 +1,41 @@
+<section id="contact" class="section section--glow">
+    <div class="container contact">
+        <div class="contact-left">
+            <p class="kicker">CONTACT</p>
+            <h2>Let’s build something together</h2>
+            <p class="muted">
+                Have a project, idea, or opportunity? Send me a message and I’ll get back to you as soon as possible.
+            </p>
+
+            <div class="contact-details">
+                <div class="item">
+                    <div class="label">Email</div>
+                    <div class="value">kingvenrebquirantenarag@gmail.com</div>
+                </div>
+                <div class="item">
+                    <div class="label">Location</div>
+                    <div class="value">Philippines (Remote)</div>
+                </div>
+            </div>
+        </div>
+
+        <form class="card form" (ngSubmit)="onSubmit()">
+            <label>
+                <span class="small">Your name</span>
+                <input name="name" placeholder="Juan Dela Cruz" required />
+            </label>
+
+            <label>
+                <span class="small">Email</span>
+                <input name="email" type="email" placeholder="you@example.com" required />
+            </label>
+
+            <label>
+                <span class="small">Message</span>
+                <textarea name="message" rows="4" placeholder="Tell me about your project…" required></textarea>
+            </label>
+
+            <button class="btn primary" type="submit">Send</button>
+        </form>
+    </div>
+</section>

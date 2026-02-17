@@ -1,0 +1,30 @@
+.footer {
+    padding: 18px 0 30px;
+    border-top: 1px solid rgba(255, 255, 255, .06);
+}
+
+.footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    color: rgba(242, 245, 255, .55);
+    font-size: 13px;
+}
+
+a {
+    color: rgba(242, 245, 255, .70);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+a:hover {
+    color: rgba(242, 245, 255, .92);
+}
+
+@media (max-width: 680px) {
+    .footer-inner {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

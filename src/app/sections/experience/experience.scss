@@ -1,0 +1,64 @@
+.intro {
+    max-width: 70ch;
+    margin-bottom: 18px;
+}
+
+.experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.experience-card {
+    padding: 18px 20px;
+}
+
+.exp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    margin-bottom: 4px;
+}
+
+.period {
+    font-size: 13px;
+    color: rgba(242, 245, 255, .65);
+    white-space: nowrap;
+}
+
+.company {
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+.exp-bullets {
+    margin: 0;
+    padding-left: 18px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.exp-bullets li {
+    color: rgba(242, 245, 255, .85);
+    line-height: 1.5;
+    font-size: 14px;
+}
+
+.tech-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.tech-tags span {
+    font-size: 11px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    color: rgba(242, 245, 255, .85);
+    letter-spacing: .02em;
+}

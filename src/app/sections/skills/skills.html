@@ -1,0 +1,22 @@
+<section id="skills" class="section section--glow">
+    <div class="container">
+        <p class="kicker">SKILLS</p>
+        <h2>What I work with</h2>
+        <p class="muted intro">
+            Technologies and tools I use to build applications and workflows.
+        </p>
+
+        <div class="grid cards-3">
+            <div class="card skill-card" *ngFor="let group of groups">
+                <h3>{{ group.title }}</h3>
+
+                <div class="skill-list">
+                    <div class="skill" *ngFor="let skill of group.skills">
+                        <img *ngIf="skill.icon" [src]="skill.icon" [alt]="skill.name">
+                        <span>{{ skill.name }}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

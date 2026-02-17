@@ -1,0 +1,75 @@
+<section id="projects" class="section">
+    <div class="container">
+        <p class="kicker">PROJECTS</p>
+        <h2>Selected Projects</h2>
+        <p class="muted intro">
+            Projects and systems I’ve built involving web applications, automation workflows, and data visualization.
+        </p>
+
+        <div class="grid cards-3">
+            <button class="project" type="button" *ngFor="let p of projects" (click)="open(p)">
+                <div class="thumb" [ngClass]="p.variant">
+                    <img [src]="p.image" [alt]="p.title">
+                </div>
+
+                <div class="p-body">
+                    <h3>{{ p.title }}</h3>
+                    <p class="muted">{{ p.description }}</p>
+
+                    <div class="tags">
+                        <span *ngFor="let t of p.tags">{{ t }}</span>
+                    </div>
+                </div>
+            </button>
+        </div>
+    </div>
+
+    <div class="overlay" *ngIf="selected" (click)="close()">
+        <div class="modal card" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
+            <div class="modal-head">
+                <div>
+                    <h3 class="modal-title">{{ selected.title }}</h3>
+                    <p class="muted">{{ selected.description }}</p>
+                </div>
+
+                <button class="close" type="button" (click)="close()" aria-label="Close">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path fill="currentColor"
+                            d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3z" />
+                    </svg>
+                </button>
+            </div>
+
+            <div class="modal-body" *ngIf="selected as proj">
+                <div class="carousel" *ngIf="proj.screenshots.length">
+
+                    <button class="carousel-btn left" *ngIf="proj.screenshots.length > 1" (click)="prevShot()">
+                        ‹
+                    </button>
+
+                    <img class="carousel-image" [src]="proj.screenshots[currentShot]" [alt]="proj.title" />
+
+                    <button class="carousel-btn right" *ngIf="proj.screenshots.length > 1" (click)="nextShot()">
+                        ›
+                    </button>
+
+                </div>
+
+                <div class="details">
+                    <div class="tags">
+                        <span *ngFor="let t of proj.tags">{{ t }}</span>
+                    </div>
+
+                    <ul class="bullets">
+                        <li *ngFor="let b of proj.bullets">{{ b }}</li>
+                    </ul>
+
+                    <a *ngIf="proj.href" class="btn primary" [href]="proj.href" target="_blank"
+                        rel="noopener noreferrer">
+                        View on GitHub →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
