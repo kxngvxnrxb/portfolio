@@ -9,7 +9,6 @@ type Project = {
   bullets: string[];
   video?: string;
   href?: string;
-  variant: 't1' | 't2' | 't3';
 };
 
 @Component({
@@ -20,6 +19,22 @@ type Project = {
 })
 export class Projects {
   projects: Project[] = [
+    {
+      title: 'Lead Intake Funnel + n8n Automation',
+      description:
+        'Lead capture form integrated with an n8n workflow that logs submissions to Google Sheets and sends automated email responses.',
+      tags: ['Angular', 'n8n', 'Automation', 'Google Sheets', 'Webhook'],
+      image: 'assets/projects/n8n-workflow.png',
+      video: 'assets/projects/n8n-automation-flow.mp4',
+      bullets: [
+        'Built a lead intake form with structured fields and validation',
+        'Connected the form to an n8n webhook for workflow automation',
+        'Processed and structured incoming lead data in n8n',
+        'Logged submissions into Google Sheets for tracking',
+        'Sent automated email responses after form submission'
+      ],
+      href: 'https://github.com/kxngvxnrxb/lead-intake-funnel-n8n',
+    },
     {
       title: 'Customer Management UI – Wireframes',
       description: 'Wireframes and UX planning for a customer management module with complex forms and structured data workflows.',
@@ -34,7 +49,6 @@ export class Projects {
         'Focused on usability, readability, and reducing form complexity'
       ],
       href: 'https://github.com/kxngvxnrxb/customer-management-wireframe',
-      variant: 't1',
     },
     {
       title: 'Food Price Analytics Dashboard (Power BI)',
@@ -48,8 +62,7 @@ export class Projects {
         'Cleaned and prepared datasets before visualization',
         'Designed layout focused on clarity and usability'
       ],
-      href: 'https://github.com/kxngvxnrxb/food-prices-analytics-dashboard', // later you can link to GitHub or PDF
-      variant: 't1'
+      href: 'https://github.com/kxngvxnrxb/food-prices-analytics-dashboard',
     },
     {
       title: 'Agricultural Wage Rate Dashboard',
@@ -63,7 +76,6 @@ export class Projects {
         'Designed KPI cards, trend charts, and top regions ranking for quick insights',
       ],
       href: 'https://github.com/kxngvxnrxb/agricultural-wage-dashboard',
-      variant: 't1',
     }
   ];
 
