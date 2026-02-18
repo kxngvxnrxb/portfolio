@@ -41,18 +41,16 @@
             </div>
 
             <div class="modal-body" *ngIf="selected as proj">
-                <div class="carousel" *ngIf="proj.screenshots.length">
+                <div class="media">
+                    <video *ngIf="proj.video; else noVideo" class="video" [src]="proj.video" controls playsinline
+                        preload="metadata">
+                    </video>
 
-                    <button class="carousel-btn left" *ngIf="proj.screenshots.length > 1" (click)="prevShot()">
-                        ‹
-                    </button>
-
-                    <img class="carousel-image" [src]="proj.screenshots[currentShot]" [alt]="proj.title" />
-
-                    <button class="carousel-btn right" *ngIf="proj.screenshots.length > 1" (click)="nextShot()">
-                        ›
-                    </button>
-
+                    <ng-template #noVideo>
+                        <div class="no-media card">
+                            <p class="muted">Preview video coming soon.</p>
+                        </div>
+                    </ng-template>
                 </div>
 
                 <div class="details">

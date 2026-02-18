@@ -72,7 +72,7 @@
 }
 
 .modal {
-    width: min(980px, 96vw);
+    width: min(1100px, 92vw);
     max-height: 86vh;
     overflow: auto;
     padding: 16px;
@@ -126,23 +126,11 @@
 }
 
 .modal-body {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     grid-template-columns: 1.2fr .8fr;
     gap: 16px;
     align-items: start;
-}
-
-.gallery {
-    display: grid;
-    gap: 12px;
-}
-
-.gallery img {
-    width: 100%;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, .10);
-    background: rgba(255, 255, 255, .03);
-    display: block;
 }
 
 .details .tags {
@@ -156,41 +144,24 @@
     line-height: 1.6;
 }
 
-.carousel {
-    position: relative;
-    margin-bottom: 16px;
+.media {
+    margin-bottom: 18px;
 }
 
-.carousel-image {
+.video {
     width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 14px;
+    border: 1px solid rgba(255, 255, 255, .08);
+    background: rgba(0, 0, 0, .3);
+}
+
+.no-media {
+    padding: 16px;
     border-radius: 12px;
     border: 1px solid rgba(255, 255, 255, .08);
-}
-
-.carousel-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, .45);
-    border: none;
-    color: white;
-    width: 36px;
-    height: 36px;
-    border-radius: 10px;
-    cursor: pointer;
-    font-size: 20px;
-}
-
-.carousel-btn.left {
-    left: 8px;
-}
-
-.carousel-btn.right {
-    right: 8px;
-}
-
-.carousel-btn:hover {
-    background: rgba(0, 0, 0, .65);
+    background: rgba(255, 255, 255, .04);
 }
 
 @media (max-width: 980px) {
