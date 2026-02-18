@@ -7,20 +7,18 @@
         </p>
 
         <div class="grid cards-3">
-            <button class="project" type="button" *ngFor="let p of projects" (click)="open(p)">
-                <div class="thumb" [ngClass]="p.variant">
-                    <img [src]="p.image" [alt]="p.title">
-                </div>
+            <div class="card project-card" *ngFor="let p of projects">
+                <button class="project-image" type="button" (click)="open(p)">
+                    <img [src]="p.image" [alt]="p.title" />
+                </button>
 
-                <div class="p-body">
-                    <h3>{{ p.title }}</h3>
-                    <p class="muted">{{ p.description }}</p>
+                <h3>{{ p.title }}</h3>
+                <p class="muted">{{ p.description }}</p>
 
-                    <div class="tags">
-                        <span *ngFor="let t of p.tags">{{ t }}</span>
-                    </div>
+                <div class="tags">
+                    <span *ngFor="let t of p.tags">{{ t }}</span>
                 </div>
-            </button>
+            </div>
         </div>
     </div>
 
@@ -42,9 +40,11 @@
 
             <div class="modal-body" *ngIf="selected as proj">
                 <div class="media">
-                    <video *ngIf="proj.video; else noVideo" class="video" [src]="proj.video" controls playsinline
-                        preload="metadata">
-                    </video>
+                    <div class="video-frame">
+                        <video *ngIf="proj.video; else noVideo" [src]="proj.video" controls playsinline
+                            preload="metadata">
+                        </video>
+                    </div>
 
                     <ng-template #noVideo>
                         <div class="no-media card">
