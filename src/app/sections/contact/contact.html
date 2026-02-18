@@ -19,23 +19,31 @@
             </div>
         </div>
 
-        <form class="card form" (ngSubmit)="onSubmit()">
+        <form class="card form" [formGroup]="form" (ngSubmit)="submit()">
             <label>
                 <span class="small">Your name</span>
-                <input name="name" placeholder="Juan Dela Cruz" required />
+                <input formControlName="name" placeholder="Juan Dela Cruz" />
+                <span class="small muted" *ngIf="name?.touched && name?.invalid">Name is required.</span>
             </label>
 
             <label>
                 <span class="small">Email</span>
-                <input name="email" type="email" placeholder="you@example.com" required />
+                <input formControlName="email" type="email" placeholder="you@example.com" />
+                <span class="small muted" *ngIf="email?.touched && email?.invalid">Valid email required.</span>
             </label>
 
             <label>
                 <span class="small">Message</span>
-                <textarea name="message" rows="4" placeholder="Tell me about your project…" required></textarea>
+                <textarea formControlName="message" rows="4" placeholder="Write your message, opportunity, or inquiry here…">></textarea>
+                <span class="small muted" *ngIf="message?.touched && message?.invalid">Message is required.</span>
             </label>
 
-            <button class="btn primary" type="submit">Send</button>
+            <button class="btn primary" type="submit" [disabled]="isSubmitting">
+                {{ isSubmitting ? 'Sending…' : 'Send' }}
+            </button>
+
+            <p class="small muted" *ngIf="success">Message sent successfully ✓</p>
+            <p class="small muted" *ngIf="error">{{ error }}</p>
         </form>
     </div>
 </section>
