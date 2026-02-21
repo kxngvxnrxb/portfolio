@@ -18,26 +18,16 @@
 }
 
 .brand {
-    display: flex;
-    gap: 10px;
+    display: inline-flex;
     align-items: center;
-    text-decoration: none;
-    color: var(--text);
+    gap: 10px;
 }
 
-.brand-mark {
-    width: 34px;
-    height: 34px;
-    border-radius: 12px;
-    display: grid;
-    place-items: center;
-    background: linear-gradient(135deg, rgba(47, 128, 255, .95), rgba(47, 128, 255, .35));
-    font-weight: 900;
-}
-
-.brand-text {
-    font-weight: 900;
-    letter-spacing: .08em;
+.brand-logo {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: 8px; // optional (nice if your logo has a white square bg)
 }
 
 .links {
