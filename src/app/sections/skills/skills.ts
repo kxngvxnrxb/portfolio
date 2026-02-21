@@ -28,7 +28,6 @@ export class Skills {
         { name: 'SCSS', icon: 'assets/logos/scss.svg' },
         { name: 'Javascript', icon: 'assets/logos/javascript.svg' },
         { name: 'Bootstrap', icon: 'assets/logos/bootstrap.svg' },
-        { name: 'RxJS', icon: 'assets/logos/rxjs.svg' },
       ]
     },
     {
@@ -87,7 +86,6 @@ export class Skills {
         { name: 'GitLab', icon: 'assets/logos/gitlab.svg' },
         { name: 'Docker', icon: 'assets/logos/docker.svg' },
         { name: 'Linux', icon: 'assets/logos/linux.svg' },
-        { name: 'npm', icon: 'assets/logos/npm.svg' },
         { name: 'XAMPP', icon: 'assets/logos/xampp.svg' },
         { name: 'Postman', icon: 'assets/logos/postman.svg' },
       ]

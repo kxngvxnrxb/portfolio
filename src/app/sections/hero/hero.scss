@@ -56,25 +56,100 @@
     height: 18px;
 }
 
-.portrait-card {
-    width: min(420px, 100%);
-    aspect-ratio: 1 / 1;
-    margin-left: auto;
-    border-radius: 28px;
-    border: 1px solid rgba(255, 255, 255, 0.10);
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.10), rgba(255, 255, 255, 0.04));
-    overflow: hidden;
+.hero-right {
     position: relative;
 }
 
-.portrait {
+/* No card. Just an artboard */
+.portrait-art {
+    width: min(520px, 100%);
+    height: 520px;
+    margin-left: auto;
+    position: relative;
+    overflow: visible;
+    /* important: don’t crop the cutout */
+}
+
+.portrait-art::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 160px;
+    background: linear-gradient(to top,
+            rgba(10, 18, 32, 0.9),
+            rgba(10, 18, 32, 0));
+    z-index: 1;
+}
+
+/* Horizontal lines (like your sample) */
+.art-lines {
+    position: absolute;
+    inset: 10% 0 0 0;
+    border-radius: 28px;
+    opacity: .55;
+    background:
+        repeating-linear-gradient(to bottom,
+            rgba(255, 255, 255, .22) 0px,
+            rgba(255, 255, 255, .22) 2px,
+            transparent 2px,
+            transparent 14px);
+    mask-image: radial-gradient(circle at 55% 35%, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0) 65%);
+}
+
+/* Orbs / bubbles */
+.art-orbs {
     position: absolute;
     inset: 0;
+    pointer-events: none;
     background:
-        linear-gradient(180deg, rgba(0, 0, 0, .08), rgba(0, 0, 0, .35)),
-        url("https://images.unsplash.com/photo-1520975958221-39e4e8f99f66?q=80&w=900&auto=format&fit=crop");
-    background-size: cover;
-    background-position: center;
+        radial-gradient(circle at 18% 25%, rgba(47, 128, 255, .35), rgba(47, 128, 255, 0) 40%),
+        radial-gradient(circle at 85% 55%, rgba(255, 255, 255, .22), rgba(255, 255, 255, 0) 38%),
+        radial-gradient(circle at 70% 18%, rgba(47, 128, 255, .18), rgba(47, 128, 255, 0) 35%);
+    filter: blur(0.2px);
+    opacity: .9;
+}
+
+/* Your cutout */
+.portrait-cutout {
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    width: min(420px, 92%);
+    height: auto;
+    z-index: 2;
+
+    filter: drop-shadow(0 26px 50px rgba(0, 0, 0, .45));
+
+    /* 🔥 THIS is the magic fade */
+    -webkit-mask-image: linear-gradient(to bottom,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 1) 75%,
+            rgba(0, 0, 0, 0.6) 88%,
+            rgba(0, 0, 0, 0) 100%);
+    mask-image: linear-gradient(to bottom,
+            rgba(0, 0, 0, 1) 0%,
+            rgba(0, 0, 0, 1) 75%,
+            rgba(0, 0, 0, 0.6) 88%,
+            rgba(0, 0, 0, 0) 100%);
+}
+
+/* Base so it doesn’t look like floating half-body */
+.art-base {
+    position: absolute;
+    left: 15%;
+    right: 15%;
+    bottom: 5px;
+    height: 60px;
+    z-index: 1;
+    border-radius: 999px;
+    background: radial-gradient(closest-side,
+            rgba(0, 0, 0, .45),
+            rgba(0, 0, 0, 0));
+    filter: blur(4px);
+    opacity: .9;
 }
 
 .cursor {
@@ -82,10 +157,11 @@
 }
 
 .section.hero {
-  min-height: 100svh; /* better on mobile than 100vh */
-  display: flex;
-  align-items: center;
-  padding: 96px 0;
+    min-height: 100svh;
+    /* better on mobile than 100vh */
+    display: flex;
+    align-items: center;
+    padding: 96px 0;
 }
 
 @keyframes blink {
