@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 type Skill = {
   name: string;
@@ -13,7 +14,7 @@ type SkillGroup = {
 
 @Component({
   selector: 'app-skills',
-  imports: [CommonModule],
+  imports: [CommonModule, RevealOnScrollDirective],
   templateUrl: './skills.html',
   styleUrl: './skills.scss',
 })

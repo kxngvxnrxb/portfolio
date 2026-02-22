@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 type Certificate = {
   title: string;
@@ -10,7 +11,7 @@ type Certificate = {
 
 @Component({
   selector: 'app-certificates',
-  imports: [CommonModule],
+  imports: [CommonModule, RevealOnScrollDirective],
   templateUrl: './certificates.html',
   styleUrl: './certificates.scss',
 })

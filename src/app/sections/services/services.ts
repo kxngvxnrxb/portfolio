@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 type Service = {
   title: string;
@@ -8,7 +9,7 @@ type Service = {
 
 @Component({
   selector: 'app-services',
-  imports: [CommonModule],
+  imports: [CommonModule, RevealOnScrollDirective],
   templateUrl: './services.html',
   styleUrl: './services.scss',
 })

@@ -2,10 +2,11 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { FormBuilder, NgForm, ReactiveFormsModule, Validators } from '@angular/forms';
+import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 @Component({
   selector: 'app-contact',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule, RevealOnScrollDirective],
   templateUrl: './contact.html',
   styleUrl: './contact.scss',
 })
