@@ -21,18 +21,18 @@ type Project = {
 export class Projects {
   projects: Project[] = [
     {
-      title: 'Lead Intake Funnel + n8n Automation',
+      title: 'AI Lead Management & Outreach Automation (Work in Progress)',
       description:
-        'Lead capture form integrated with an n8n workflow that logs submissions to Google Sheets and sends automated email responses.',
-      tags: ['Angular', 'n8n', 'Automation', 'Google Sheets', 'Webhook'],
+        'AI-powered lead automation system built with n8n that handles lead intake, scoring, outreach, reply detection, and automated follow-ups.',
+      tags: ['n8n', 'AI Automation', 'PostgreSQL', 'Gmail API', 'Telegram', 'Workflow Automation'],
       image: 'assets/projects/n8n-workflow.png',
       video: 'assets/projects/n8n-automation-flow.mp4',
       bullets: [
-        'Built a lead intake form with structured fields and validation',
-        'Connected the form to an n8n webhook for workflow automation',
-        'Processed and structured incoming lead data in n8n',
-        'Logged submissions into Google Sheets for tracking',
-        'Sent automated email responses after form submission'
+        'Built an automated lead intake system using webhooks and data validation',
+        'Implemented AI-powered lead scoring and routing logic',
+        'Generated personalized outreach emails using AI',
+        'Detected Gmail replies and automatically stopped follow-ups',
+        'Created a scheduled AI follow-up workflow for unanswered leads'
       ],
       href: 'https://github.com/kxngvxnrxb/lead-intake-funnel-n8n',
     },
