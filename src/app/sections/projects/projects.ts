@@ -34,7 +34,7 @@ export class Projects {
         'Detected Gmail replies and automatically stopped follow-ups',
         'Created a scheduled AI follow-up workflow for unanswered leads'
       ],
-      href: 'https://github.com/kxngvxnrxb/lead-intake-funnel-n8n',
+      href: 'https://github.com/kxngvxnrxb/lead-automation-system',
     },
     {
       title: 'Customer Management UI – Wireframes',
