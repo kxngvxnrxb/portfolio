@@ -1,12 +1,16 @@
-import { CommonModule } from '@angular/common';
-import { Component, HostListener } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, AfterViewInit } from '@angular/core';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 
 type Project = {
   title: string;
   description: string;
   tags: string[];
-  image: string;
+  /** Screenshot. Optional: tiles without one fall back to a typographic tile. */
+  image?: string;
+  /** Short tagline, shown in the modal under the description. */
+  tagline?: string;
+  /** Portrait-shaped artwork: shifts the tile crop down to its focal point. */
+  portrait?: boolean;
   bullets: string[];
   video?: string;
   href?: string;
@@ -14,12 +18,30 @@ type Project = {
 
 @Component({
   selector: 'app-projects',
-  imports: [CommonModule, RevealOnScrollDirective],
+  imports: [RevealOnScrollDirective],
   templateUrl: './projects.html',
   styleUrl: './projects.scss',
 })
-export class Projects {
+export class Projects implements AfterViewInit {
   projects: Project[] = [
+    {
+      /* Live product, featured first. Portrait promo artwork (768x1400),
+         cropped to the phone via the `portrait` flag. */
+      title: 'ReLyfe',
+      description:
+        'Mobile-only neighborhood giveaway and resale board for Android. Give away, sell, or recycle unused household items — free, with no account and no ads.',
+      tags: ['Android', 'Product', 'Waitlist'],
+      tagline: 'One city. One board. Nothing wasted.',
+      image: 'assets/images/relyfe-preview.jpg',
+      portrait: true,
+      bullets: [
+        'Mobile-only neighborhood board for giving away, selling, or recycling unused household items',
+        'Free to use — no account required and no ads',
+        'Waitlist landing page leading up to the Android launch',
+        'Built around keeping usable items in circulation instead of in the trash',
+      ],
+      href: 'https://relyfe.kingvenreb.dev/',
+    },
     {
       title: 'AI Lead Management & Outreach Automation (Work in Progress)',
       description:
@@ -82,6 +104,52 @@ export class Projects {
 
   selected?: Project;
   currentShot = 0;
+
+  /* Horizontal scroll-snap slider */
+  @ViewChild('scroller') scroller?: ElementRef<HTMLElement>;
+  activeIndex = 0;
+
+  ngAfterViewInit() {
+    this.onScroll();
+  }
+
+  /** One snap step = tile width + grid gap (0 in jsdom / pre-layout, guarded) */
+  private step(): number {
+    const el = this.scroller?.nativeElement;
+    const tile = el?.querySelector<HTMLElement>('.tile');
+    if (!el || !tile) return 0;
+    const gap = parseFloat(getComputedStyle(el).columnGap) || 0;
+    return tile.offsetWidth + gap;
+  }
+
+  get atStart(): boolean {
+    return this.activeIndex <= 0;
+  }
+
+  get atEnd(): boolean {
+    return this.activeIndex >= this.projects.length - 1;
+  }
+
+  /* Active dot = index of the tile nearest the current scroll position */
+  onScroll() {
+    const el = this.scroller?.nativeElement;
+    const s = this.step();
+    if (!el || !s) return;
+    const max = el.scrollWidth - el.clientWidth;
+    const i = Math.round(el.scrollLeft / s);
+    this.activeIndex = el.scrollLeft >= max - 2
+      ? this.projects.length - 1
+      : Math.max(0, Math.min(this.projects.length - 1, i));
+  }
+
+  slide(dir: number) {
+    const s = this.step();
+    if (s) this.scroller?.nativeElement.scrollBy({ left: dir * s, behavior: 'smooth' });
+  }
+
+  goTo(i: number) {
+    this.scroller?.nativeElement.scrollTo({ left: i * this.step(), behavior: 'smooth' });
+  }
 
   open(p: Project) {
     this.selected = p;

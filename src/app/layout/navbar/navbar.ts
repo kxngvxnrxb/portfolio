@@ -15,8 +15,9 @@ export class Navbar {
   items: NavItem[] = [
     { id: 'home', label: 'Home' },
     { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
+    { id: 'projects', label: 'Work' },
+    { id: 'skills', label: 'Capabilities' },
+    { id: 'services', label: 'Services' },
     { id: 'experience', label: 'Experience' },
     { id: 'certificates', label: 'Certificates' },
     { id: 'contact', label: 'Contact' },
@@ -37,8 +38,8 @@ export class Navbar {
 
     this.activeId = id;
 
-    const y = el.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top: y, behavior: 'smooth' });
+    // scrollIntoView honors the shared `scroll-margin-top` on section[id]
+    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
 
     this.close();
   }
@@ -50,6 +51,11 @@ export class Navbar {
   @HostListener('window:scroll')
   onScroll() {
     this.updateActiveSection();
+  }
+
+  @HostListener('document:keydown.escape')
+  onEscape() {
+    if (this.menuOpen) this.close();
   }
 
   private updateActiveSection() {

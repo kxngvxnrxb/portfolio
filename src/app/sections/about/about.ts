@@ -9,10 +9,7 @@ import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scrol
 })
 export class About {
   scrollTo(id: string) {
-    const el = document.getElementById(id);
-    if (!el) return;
-
-    const y = el.getBoundingClientRect().top + window.scrollY;
-    window.scrollTo({ top: y, behavior: 'smooth' });
+    // scrollIntoView honors the shared `scroll-margin-top` on section[id]
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }

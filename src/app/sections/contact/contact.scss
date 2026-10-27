@@ -1,64 +1,88 @@
-.contact {
+/* Full-width CTA banner card */
+.banner {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 16px;
-    align-items: start;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 40px;
+    padding: 48px;
+    background: var(--surface);
+    border: var(--hairline);
+    border-radius: var(--radius);
+    overflow: hidden;
+    position: relative;
 }
 
-.form {
-    padding: 16px;
-    display: grid;
-    gap: 12px;
+.banner-title {
+    font-size: clamp(44px, 7vw, 96px);
+    margin-bottom: 18px;
 }
 
-label {
+.banner-sub {
+    max-width: 44ch;
+    margin-bottom: 28px;
+}
+
+.banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    flex-wrap: wrap;
+
+    .btn svg {
+        width: 16px;
+        height: 16px;
+    }
+}
+
+.banner-details {
+    margin: 0;
+    display: grid;
+    align-content: start;
+    gap: 0;
+    border-left: var(--hairline);
+    padding-left: 40px;
+}
+
+.detail {
     display: grid;
     gap: 6px;
-}
+    padding: 14px 0;
+    border-bottom: var(--hairline);
 
-input,
-textarea {
-    width: 100%;
-    padding: 12px 12px;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, .12);
-    background: rgba(255, 255, 255, .05);
-    color: var(--text);
-    outline: none;
-}
+    dt {
+        margin: 0;
+    }
 
-input:focus,
-textarea:focus {
-    border-color: rgba(47, 128, 255, .45);
-}
+    dd {
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 500;
+        word-break: break-word;
 
-.contact-details {
-    margin-top: 18px;
-    display: grid;
-    gap: 10px;
-    max-width: 360px;
-}
+        svg {
+            width: 18px;
+            height: 18px;
+            flex: none;
+            color: var(--muted);
+        }
+    }
 
-.item {
-    padding: 12px;
-    border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, .10);
-    background: rgba(255, 255, 255, .05);
-}
-
-.label {
-    font-size: 12px;
-    color: rgba(242, 245, 255, .70);
-    margin-bottom: 4px;
-}
-
-.value {
-    font-weight: 700;
-    color: rgba(242, 245, 255, .90);
+    &:last-child {
+        border-bottom: 0;
+    }
 }
 
 @media (max-width: 980px) {
-    .contact {
+    .banner {
         grid-template-columns: 1fr;
+        padding: 28px;
+    }
+
+    .banner-details {
+        border-left: 0;
+        padding-left: 0;
+        border-top: var(--hairline);
+        padding-top: 8px;
     }
 }

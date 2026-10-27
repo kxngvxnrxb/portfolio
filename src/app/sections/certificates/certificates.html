@@ -1,28 +1,31 @@
 <section id="certificates" class="section" revealOnScroll>
     <div class="container">
-        <p class="kicker">CERTIFICATES</p>
-        <h2>Certifications & Learning</h2>
-        <p class="muted intro">
-            Courses and certifications that support my technical skills and continuous learning.
-        </p>
+        <header class="section-head">
+            <p class="kicker">Certificates</p>
+            <h2>Certifications &amp; Learning</h2>
+            <p class="muted">
+                Courses and certifications that support my technical skills and continuous learning.
+            </p>
+        </header>
 
-        <div class="grid cards-3">
-            <div class="card cert-card" *ngFor="let cert of certificates">
+        <div class="cert-index">
+            @for (cert of certificates; track cert.title) {
+                <article class="cert-row">
+                    <a class="cert-thumb" [href]="cert.file" target="_blank" rel="noopener noreferrer"
+                        [attr.aria-label]="'Open certificate: ' + cert.title">
+                        <img [src]="cert.file" [alt]="cert.title" />
+                    </a>
 
-                <a [href]="cert.file" target="_blank" class="cert-image">
-                    <img [src]="cert.file" [alt]="cert.title" />
-                </a>
+                    <div class="cert-body">
+                        <h3>{{ cert.title }}</h3>
+                        <p class="meta">{{ cert.issuer }} — {{ cert.year }}</p>
+                    </div>
 
-                <h3>{{ cert.title }}</h3>
-                <p class="muted">{{ cert.issuer }}</p>
-                <p class="small">{{ cert.year }}</p>
-
-                <a class="cert-link" [href]="cert.file" target="_blank">
-                    View Certificate →
-                </a>
-
-            </div>
+                    <a class="cert-link" [href]="cert.file" target="_blank" rel="noopener noreferrer">
+                        View
+                    </a>
+                </article>
+            }
         </div>
-
     </div>
 </section>
