@@ -1,16 +1,23 @@
-<section id="services" class="section section--glow" revealOnScroll>
+<section id="services" class="section" revealOnScroll>
     <div class="container">
-        <p class="kicker">SERVICES</p>
-        <h2>What I do</h2>
-        <p class="muted intro">
-            A simple list of what I can help you build.
-        </p>
+        <header class="section-head">
+            <p class="kicker">Services</p>
+            <h2>What I do</h2>
+            <p class="muted">
+                A simple list of what I can help you build.
+            </p>
+        </header>
 
-        <div class="grid cards-3">
-            <div class="card service" *ngFor="let s of services">
-                <h3>{{ s.title }}</h3>
-                <p class="muted">{{ s.description }}</p>
-            </div>
+        <div class="index-list service-list">
+            @for (s of services; track s.title) {
+                <article class="index-row service-row">
+                    <span class="row-index meta" aria-hidden="true"></span>
+                    <div class="service-copy">
+                        <h3>{{ s.title }}</h3>
+                        <p class="muted">{{ s.description }}</p>
+                    </div>
+                </article>
+            }
         </div>
     </div>
 </section>

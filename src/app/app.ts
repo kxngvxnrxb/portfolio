@@ -6,12 +6,13 @@ import { Projects } from './sections/projects/projects';
 import { Contact } from './sections/contact/contact';
 import { Footer } from './layout/footer/footer';
 import { Skills } from './sections/skills/skills';
+import { Services } from './sections/services/services';
 import { Experience } from './sections/experience/experience';
 import { Certificates } from './sections/certificates/certificates';
 
 @Component({
   selector: 'app-root',
-  imports: [Navbar, Hero, About, Skills, Projects, Experience, Certificates, Contact, Footer],
+  imports: [Navbar, Hero, About, Skills, Services, Projects, Experience, Certificates, Contact, Footer],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })

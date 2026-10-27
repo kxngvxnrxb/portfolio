@@ -1,22 +1,53 @@
-<section id="skills" class="section section--glow" revealOnScroll>
+<section id="skills" class="section" revealOnScroll>
     <div class="container">
-        <p class="kicker">SKILLS</p>
-        <h2>What I work with</h2>
-        <p class="muted intro">
-            Technologies and tools I use to build applications and workflows.
-        </p>
-
-        <div class="grid cards-3">
-            <div class="card skill-card" *ngFor="let group of groups">
-                <h3>{{ group.title }}</h3>
-
-                <div class="skill-list">
-                    <div class="skill" *ngFor="let skill of group.skills">
-                        <img *ngIf="skill.icon" [src]="skill.icon" [alt]="skill.name">
-                        <span>{{ skill.name }}</span>
-                    </div>
-                </div>
+        <header class="section-head">
+            <div class="head-copy">
+                <p class="kicker">Capabilities</p>
+                <h2>What I work with</h2>
+                <p class="muted">
+                    Technologies and tools I use to build applications and workflows.
+                </p>
             </div>
+        </header>
+
+        <div class="capabilities">
+            <!-- left panel: icon + heading + description list, taken from real groups -->
+            <div class="cap-list">
+                @for (group of groups; track group.title) {
+                    <article class="cap">
+                        @if (group.glyph) {
+                            <svg class="cap-icon-glyph" viewBox="0 0 24 24" aria-hidden="true">
+                                <path [attr.d]="group.glyph" fill="none" stroke="currentColor" stroke-width="1.5"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        } @else {
+                            <img class="cap-icon" [src]="group.skills[0].icon" alt="" aria-hidden="true" />
+                        }
+                        <div class="cap-copy">
+                            <h3>{{ group.title }}</h3>
+                            <p class="muted cap-desc">
+                                @for (skill of group.skills; track skill.name; let last = $last) {
+                                    {{ skill.name }}@if (!last) {<span aria-hidden="true">, </span>}
+                                }
+                            </p>
+                        </div>
+                    </article>
+                }
+            </div>
+
+            <!-- right panel: full tools showcase -->
+            <aside class="cap-panel">
+                <div class="panel-block">
+                    <p class="meta panel-label">Tools &amp; Technologies</p>
+                    <ul class="tool-grid">
+                        @for (tool of tools; track tool.name) {
+                            <li class="tool-tile" [title]="tool.name">
+                                <img [src]="tool.icon" [alt]="tool.name" />
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </aside>
         </div>
     </div>
 </section>

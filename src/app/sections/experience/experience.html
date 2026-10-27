@@ -1,28 +1,37 @@
-<section id="experience" class="section section--glow" revealOnScroll>
+<section id="experience" class="section" revealOnScroll>
     <div class="container">
-        <p class="kicker">EXPERIENCE</p>
-        <h2>Work Experience</h2>
-        <p class="muted intro">
-            Professional experience building web applications, integrating APIs, and working with real-world systems.
-        </p>
+        <header class="section-head">
+            <p class="kicker">Experience</p>
+            <h2>Work Experience</h2>
+            <p class="muted">
+                Professional experience building web applications, integrating APIs, and working with real-world systems.
+            </p>
+        </header>
 
-        <div class="experience-list">
-            <div class="card experience-card" *ngFor="let exp of experiences">
-                <div class="exp-header">
-                    <h3>{{ exp.role }}</h3>
-                    <span class="period">{{ exp.period }}</span>
-                </div>
+        <div class="timeline">
+            @for (exp of experiences; track exp.company) {
+                <article class="timeline-row">
+                    <div class="row-head">
+                        <h3 class="row-title">
+                            {{ exp.role }}
+                            <span class="company">· {{ exp.company }}</span>
+                        </h3>
+                        <span class="meta period">{{ exp.period }}</span>
+                    </div>
 
-                <div class="company muted">{{ exp.company }}</div>
+                    <ul class="exp-bullets">
+                        @for (b of exp.bullets; track b) {
+                            <li>{{ b }}</li>
+                        }
+                    </ul>
 
-                <ul class="exp-bullets">
-                    <li *ngFor="let b of exp.bullets">{{ b }}</li>
-                </ul>
-
-                <div class="tech-tags">
-                    <span *ngFor="let t of exp.tech">{{ t }}</span>
-                </div>
-            </div>
+                    <div class="tech-tags">
+                        @for (t of exp.tech; track t) {
+                            <span class="chip">{{ t }}</span>
+                        }
+                    </div>
+                </article>
+            }
         </div>
     </div>
 </section>

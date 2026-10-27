@@ -1,73 +1,124 @@
-<section id="projects" class="section">
+<section id="projects" class="section band">
     <div class="container" revealOnScroll>
-        <p class="kicker">PROJECTS</p>
-        <h2>Selected Projects</h2>
-        <p class="muted intro">
-            Projects and systems I’ve built involving web applications, automation workflows, and data visualization.
-        </p>
-
-        <div class="grid cards-3">
-            <div class="card project-card" *ngFor="let p of projects">
-                <button class="project-image" type="button" (click)="open(p)">
-                    <img [src]="p.image" [alt]="p.title" />
-                </button>
-
-                <h3>{{ p.title }}</h3>
-                <p class="muted">{{ p.description }}</p>
-
-                <div class="tags">
-                    <span *ngFor="let t of p.tags">{{ t }}</span>
-                </div>
+        <header class="section-head">
+            <div class="head-copy">
+                <p class="kicker">Featured Work</p>
+                <h2>Selected Projects</h2>
+                <p class="muted">
+                    Web applications, automation workflows, and data visualization systems I’ve built.
+                </p>
             </div>
+            <a class="head-action" href="https://github.com/kxngvxnrxb/" target="_blank" rel="noopener noreferrer">
+                Explore all projects →
+            </a>
+        </header>
+
+        <!-- Horizontal scroll-snap strip: every project, ~3 tiles per view -->
+        <div class="tiles" #scroller (scroll)="onScroll()" tabindex="0" aria-label="Projects slider">
+            @for (p of projects; track p.title) {
+                <article class="tile" [class.tile-portrait]="p.portrait">
+                    <button class="tile-media" type="button" (click)="open(p)" [attr.aria-label]="'Open project: ' + p.title">
+                        <img [src]="p.image" [alt]="p.title" />
+                    </button>
+
+                    <div class="tile-overlay">
+                        <div class="tile-copy">
+                            <h3>{{ p.title }}</h3>
+                            <span class="meta">{{ p.tags[0] }}</span>
+                        </div>
+                        <button class="tile-go" type="button" (click)="open(p)" aria-label="Open project details">
+                            <svg viewBox="0 0 24 24" aria-hidden="true">
+                                <path d="M7 17 17 7 M9 7h8v8" fill="none" stroke="currentColor" stroke-width="1.8"
+                                    stroke-linecap="round" stroke-linejoin="round" />
+                            </svg>
+                        </button>
+                    </div>
+                </article>
+            }
         </div>
-    </div>
 
-    <div class="overlay" *ngIf="selected" (click)="close()">
-        <div class="modal card" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
-            <div class="modal-head">
-                <div>
-                    <h3 class="modal-title">{{ selected.title }}</h3>
-                    <p class="muted">{{ selected.description }}</p>
-                </div>
+        <div class="slider-foot">
+            <div class="dots" role="tablist" aria-label="Slider position">
+                @for (p of projects; track p.title; let i = $index) {
+                    <button class="dot" type="button" role="tab"
+                        [class.active]="i === activeIndex" [attr.aria-selected]="i === activeIndex"
+                        [attr.aria-label]="'Go to project ' + (i + 1)" (click)="goTo(i)"></button>
+                }
+            </div>
 
-                <button class="close" type="button" (click)="close()" aria-label="Close">
+            <div class="slide-nav">
+                <button class="slide-btn" type="button" (click)="slide(-1)" [disabled]="atStart"
+                    aria-label="Previous projects">
                     <svg viewBox="0 0 24 24" aria-hidden="true">
-                        <path fill="currentColor"
-                            d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3z" />
+                        <path d="M19 12H5 M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
+                </button>
+                <button class="slide-btn" type="button" (click)="slide(1)" [disabled]="atEnd"
+                    aria-label="Next projects">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M5 12h14 M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8"
+                            stroke-linecap="round" stroke-linejoin="round" />
                     </svg>
                 </button>
             </div>
+        </div>
+    </div>
 
-            <div class="modal-body" *ngIf="selected as proj">
-                <div class="media">
-                    <div class="video-frame">
-                        <video *ngIf="proj.video; else noVideo" [src]="proj.video" controls playsinline
-                            preload="metadata">
-                        </video>
+    @if (selected; as proj) {
+        <div class="overlay" (click)="close()">
+            <div class="modal card" (click)="$event.stopPropagation()" role="dialog" aria-modal="true">
+                <div class="modal-head">
+                    <div>
+                        <h3 class="modal-title">{{ proj.title }}</h3>
+                        <p class="muted">{{ proj.description }}</p>
+                        @if (proj.tagline) {
+                            <p class="meta modal-tagline">{{ proj.tagline }}</p>
+                        }
                     </div>
 
-                    <ng-template #noVideo>
-                        <div class="no-media card">
-                            <p class="muted">Preview video coming soon.</p>
-                        </div>
-                    </ng-template>
+                    <button class="close" type="button" (click)="close()" aria-label="Close">
+                        <svg viewBox="0 0 24 24" aria-hidden="true">
+                            <path fill="currentColor"
+                                d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4L10.6 13.4 4.3 19.7 2.9 18.3 9.2 12 2.9 5.7 4.3 4.3l6.3 6.3 6.3-6.3z" />
+                        </svg>
+                    </button>
                 </div>
 
-                <div class="details">
-                    <div class="tags">
-                        <span *ngFor="let t of proj.tags">{{ t }}</span>
+                <div class="modal-body">
+                    <div class="media">
+                        <div class="video-frame">
+                            @if (proj.video) {
+                                <video [src]="proj.video" controls playsinline preload="metadata"></video>
+                            } @else {
+                                <div class="no-media card">
+                                    <p class="muted">Preview video coming soon.</p>
+                                </div>
+                            }
+                        </div>
                     </div>
 
-                    <ul class="bullets">
-                        <li *ngFor="let b of proj.bullets">{{ b }}</li>
-                    </ul>
+                    <div class="details">
+                        <div class="tags">
+                            @for (t of proj.tags; track t) {
+                                <span class="chip">{{ t }}</span>
+                            }
+                        </div>
 
-                    <a *ngIf="proj.href" class="btn primary" [href]="proj.href" target="_blank"
-                        rel="noopener noreferrer">
-                        View on GitHub →
-                    </a>
+                        <ul class="bullets">
+                            @for (b of proj.bullets; track b) {
+                                <li>{{ b }}</li>
+                            }
+                        </ul>
+
+                        @if (proj.href) {
+                            <a class="btn pill" [href]="proj.href" target="_blank" rel="noopener noreferrer">
+                                View Project <span aria-hidden="true">↗</span>
+                            </a>
+                        }
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
+    }
 </section>

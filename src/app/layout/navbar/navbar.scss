@@ -3,17 +3,17 @@
     top: 0;
     left: 0;
     right: 0;
-    z-index: 9999;
     z-index: 20;
-    background: linear-gradient(180deg, rgba(7, 20, 39, .92), rgba(7, 20, 39, .72));
-    border-bottom: 1px solid rgba(255, 255, 255, .06);
+    background: rgba(13, 14, 18, .84);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
 }
 
 .nav-inner {
-    height: 68px;
+    height: 72px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
     gap: 14px;
 }
 
@@ -24,51 +24,66 @@
 }
 
 .brand-logo {
-    width: 44px;
-    height: 44px;
+    width: 38px;
+    height: 38px;
     object-fit: contain;
-    border-radius: 8px; // optional (nice if your logo has a white square bg)
+    border-radius: var(--radius);
 }
 
+/* Centered uppercase mono links */
 .links {
     display: flex;
-    gap: 18px;
     align-items: center;
+    gap: 4px;
+    margin: 0 auto;
 }
 
 .links a {
-    color: rgba(242, 245, 255, .75);
+    color: var(--muted);
     text-decoration: none;
-    font-weight: 700;
-    font-size: 13px;
-    padding: 10px 12px;
-    border-radius: 12px;
-
-    border: 1px solid transparent;
-    /* ✅ important */
-    transition: 160ms ease;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: var(--fs-0);
+    letter-spacing: var(--ls-mono);
+    text-transform: uppercase;
+    padding: 8px 12px;
+    border-radius: var(--radius-pill);
+    transition: color 160ms ease;
 }
 
 .links a:hover {
-    color: rgba(242, 245, 255, .95);
+    color: var(--text);
 }
 
 .links a.active {
     color: var(--text);
-    border-color: rgba(47, 128, 255, .28);
-    background: rgba(47, 128, 255, .10);
+    background: rgba(255, 255, 255, .07);
 }
 
+.links a:focus-visible {
+    outline: 1px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.nav-cta {
+    margin-left: 0;
+    flex: none;
+}
+
+.nav .btn {
+    padding: 10px 18px;
+}
+
+/* Burger */
 .burger {
     display: none;
-    width: 44px;
-    height: 44px;
-    border-radius: 14px;
-    border: 1px solid rgba(255, 255, 255, .10);
-    background: rgba(255, 255, 255, .06);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-pill);
+    border: 1px solid var(--border);
+    background: transparent;
     color: var(--text);
     cursor: pointer;
-
     align-items: center;
     justify-content: center;
 
@@ -81,23 +96,25 @@
 
 @media (max-width: 980px) {
     .links {
-        display: none
+        display: none;
     }
 
     .links.open {
         display: flex;
         position: absolute;
-        top: 68px;
+        top: 72px;
         right: 4vw;
         flex-direction: column;
-        width: min(240px, 92vw);
-        padding: 10px;
-        background: rgba(7, 20, 39, .95);
-        border: 1px solid rgba(255, 255, 255, .10);
-        border-radius: 16px;
+        align-items: stretch;
+        width: min(260px, 92vw);
+        padding: 8px;
+        background: var(--surface-raised);
+        border: 1px solid var(--border);
+        border-radius: var(--radius);
+        box-shadow: 0 24px 48px rgba(0, 0, 0, .45);
     }
 
     .burger {
-        display: inline-flex
+        display: inline-flex;
     }
 }

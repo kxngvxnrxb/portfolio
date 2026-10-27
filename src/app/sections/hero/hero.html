@@ -1,22 +1,34 @@
-<section id="home" class="section section--glow hero" revealOnScroll>
+<section id="home" class="section hero" revealOnScroll>
+    <span class="stamp meta" aria-hidden="true">Available for freelance</span>
+
     <div class="container hero-grid">
         <div class="hero-left stagger" revealOnScroll>
-            <p class="kicker">Angular Developer • API Integration • Automation Learner</p>
+            <p class="kicker">Digital experiences that inspire</p>
 
             <h1>
-                Hi, I build <span class="accent">modern apps</span><br />
-                & <span class="accent">smart automations</span><span class="cursor">|</span>
+                Hi, I build <span class="accent-word">modern apps</span><br />
+                &amp; smart automations
             </h1>
 
             <p class="lead">
-                Frontend developer with experience in Angular, APIs, and data-driven systems.
-                Background in .NET development, IT systems, and UI design, now expanding into workflow automation using
-                n8n and GoHighLevel.
+                Frontend developer building Angular apps, API integrations, and data-driven interfaces — now expanding
+                into workflow automation with n8n and GoHighLevel.
             </p>
 
             <div class="hero-actions">
-                <button class="btn primary" type="button" (click)="scrollTo('projects')">View Work</button>
-                <button class="btn" type="button" (click)="scrollTo('contact')">Get in touch</button>
+                <button class="btn pill" type="button" (click)="scrollTo('projects')">
+                    View My Work <span aria-hidden="true">↗</span>
+                </button>
+                <!-- Feather "download" (MIT), verbatim source markup -->
+                <a class="btn" href="/King-Venreb-Narag-Resume.pdf" download>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                    </svg>
+                    Download Resume
+                </a>
             </div>
 
             <div class="social">
@@ -45,15 +57,42 @@
             </div>
         </div>
 
-        <div class="hero-right">
-            <div class="portrait-art">
-                <div class="art-lines"></div>
-                <div class="art-orbs"></div>
+        <img class="hero-portrait" src="assets/images/profile.png" alt="Portrait of King Venreb Narag" />
+    </div>
 
-                <img class="portrait-cutout" src="assets/images/profile.png" alt="Your portrait" />
-
-                <div class="art-base"></div>
-            </div>
-        </div>
+    <div class="container">
+        <!-- Figures carried over from the About stats (5+/2+/20+) plus the real
+             certification count in shared/data/certificates.data.ts -->
+        <dl class="stat-strip" revealOnScroll>
+            @for (stat of stats; track stat.label) {
+                <div class="stat">
+                    <!-- Feather icons (MIT), verbatim from feather-icons/src/icons —
+                         drawn as separate elements, not concatenated d strings -->
+                    <svg class="stat-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                        stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        @switch (stat.icon) {
+                            @case ('clock') {
+                                <circle cx="12" cy="12" r="10" />
+                                <polyline points="12 6 12 12 16 14" />
+                            }
+                            @case ('code') {
+                                <polyline points="16 18 22 12 16 6" />
+                                <polyline points="8 6 2 12 8 18" />
+                            }
+                            @case ('briefcase') {
+                                <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                                <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                            }
+                            @case ('award') {
+                                <circle cx="12" cy="8" r="7" />
+                                <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                            }
+                        }
+                    </svg>
+                    <dt class="meta">{{ stat.label }}</dt>
+                    <dd class="stat-num">{{ stat.value }}</dd>
+                </div>
+            }
+        </dl>
     </div>
 </section>

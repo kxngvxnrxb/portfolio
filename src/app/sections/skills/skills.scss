@@ -1,43 +1,117 @@
-.intro {
-    max-width: 70ch;
+/* Capabilities split: groups left, tools + certification teaser right */
+.capabilities {
+    display: grid;
+    grid-template-columns: 1.4fr 0.6fr;
+    gap: 56px;
+    align-items: start;
+}
+
+/* Uniform separators: a top hairline on every row plus one shared closing
+   hairline from the container, so the 2-col grid closes evenly regardless of
+   which cell happens to be the DOM's last child */
+.cap-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0 40px;
+    border-bottom: var(--hairline);
+}
+
+/* Generous row rhythm so the left list carries its full column height */
+.cap {
+    display: grid;
+    grid-template-columns: 36px 1fr;
+    gap: 14px;
+    align-items: start;
+    padding: 36px 0;
+    border-top: var(--hairline);
+}
+
+.cap-icon {
+    width: 28px;
+    height: 28px;
+    object-fit: contain;
+    margin-top: 2px;
+}
+
+/* stroke glyph for groups with no logo (Practices & Concepts, AI) */
+.cap-icon-glyph {
+    width: 28px;
+    height: 28px;
+    margin-top: 2px;
+    color: var(--text-dim);
+}
+
+.cap-copy {
+    display: grid;
+    gap: 10px;
+
+    h3 {
+        font-size: var(--fs-3);
+        font-weight: 600;
+        letter-spacing: var(--ls-tight);
+    }
+}
+
+.cap-desc {
+    font-size: var(--fs-2);
+    line-height: 1.55;
+}
+
+/* Right panel: scrolls with the page — pinning a long panel would clip it */
+.cap-panel {
+    display: grid;
+    align-content: start;
+}
+
+.panel-label {
+    display: block;
+    padding-bottom: 12px;
     margin-bottom: 18px;
+    border-bottom: var(--hairline);
 }
 
-.skill-card {
-    padding: 18px;
-}
-
-.skill-card h3 {
-    margin-bottom: 12px;
-}
-
-/* skill tags */
-.skill-list {
-    display: flex;
-    flex-wrap: wrap;
+/* Tools tile grid — larger tiles so the showcase fills its column height */
+.tool-grid {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(68px, 1fr));
     gap: 12px;
 }
 
-.skill {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-
-    padding: 8px 12px;
+.tool-tile {
+    aspect-ratio: 1;
+    display: grid;
+    place-items: center;
+    border: var(--hairline);
     border-radius: 12px;
-    border: 1px solid rgba(255, 255, 255, .12);
-    background: rgba(255, 255, 255, .05);
+    background: var(--surface);
+    padding: 10px;
+    transition: border-color 160ms ease;
 
-    transition: 150ms ease;
+    &:hover {
+        border-color: var(--border-strong);
+    }
+
+    img {
+        width: 28px;
+        height: 28px;
+        object-fit: contain;
+    }
 }
 
-.skill:hover {
-    border-color: rgba(47, 128, 255, .35);
-    background: rgba(47, 128, 255, .10);
-}
+@media (max-width: 980px) {
+    .capabilities {
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
 
-.skill img {
-    width: 20px;
-    height: 20px;
-    object-fit: contain;
+    .cap-list {
+        grid-template-columns: 1fr;
+    }
+
+    .tool-grid {
+        grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    }
 }

@@ -11,9 +11,12 @@
             </a>
         </nav>
 
-        <a class="btn primary" href="#contact" (click)="scrollTo('contact'); $event.preventDefault()">Let’s Talk</a>
+        <a class="btn pill nav-cta" href="#contact" (click)="scrollTo('contact'); $event.preventDefault()">
+            Let’s Talk <span aria-hidden="true">↗</span>
+        </a>
 
-        <button class="burger" type="button" (click)="toggle()" aria-label="Open menu">
+        <button class="burger" type="button" (click)="toggle()" [attr.aria-expanded]="menuOpen"
+            [attr.aria-label]="menuOpen ? 'Close menu' : 'Open menu'">
             <svg *ngIf="!menuOpen" viewBox="0 0 24 24" aria-hidden="true">
                 <path fill="currentColor" d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z" />
             </svg>

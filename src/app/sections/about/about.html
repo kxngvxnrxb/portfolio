@@ -1,56 +1,47 @@
 <section id="about" class="section" revealOnScroll>
-    <div class="container about-grid">
-        <div class="card about-left">
-            <div class="about-portrait">
-                <div class="about-art"></div>
+    <div class="container">
+        <header class="section-head">
+            <div class="head-copy">
+                <p class="kicker">Profile</p>
+                <h2>Reliable interfaces, practical automations</h2>
+            </div>
+            <p class="muted">
+                Frontend developer specializing in Angular, APIs, and data-driven applications — with a background in
+                backend development, IT systems, and databases.
+            </p>
+        </header>
+
+        <div class="about-grid">
+            <figure class="about-media">
                 <img src="assets/images/about-me.png" alt="King Venreb seated portrait" />
-                <div class="about-base"></div>
-            </div>
-        </div>
+                <figcaption class="meta">Philippines (Remote)</figcaption>
+            </figure>
 
-        <div class="about-right">
-            <p class="kicker">ABOUT</p>
-            <p class="kicker tech">
-                Angular • APIs • Automation • UI • Data
-            </p>
-            <h2>Building reliable interfaces and practical automations</h2>
-            <p class="muted">
-                I’m a frontend developer specializing in Angular, APIs, and data-driven applications.
-                My background includes backend development, IT systems, and databases,
-                which helps me build applications that are both visually clean and technically reliable.
-            </p>
+            <div class="about-body">
+                <p class="muted">
+                    My background includes backend development, IT systems, and databases, which helps me build
+                    applications that are both visually clean and technically reliable.
+                </p>
 
-            <p class="muted">
-                I also have experience in graphic design and basic data analytics,
-                working with tools like Photoshop, Canva, Excel, and Power BI.
-                This helps me approach interfaces with both usability and data clarity in mind.
-            </p>
+                <p class="muted">
+                    I also have experience in graphic design and basic data analytics, working with tools like
+                    Photoshop, Canva, Excel, and Power BI. This helps me approach interfaces with both usability and
+                    data clarity in mind.
+                </p>
 
-            <p class="muted">
-                Recently, I’ve been expanding into workflow automation using tools like n8n
-                and GoHighLevel to streamline processes such as lead intake, email workflows, and scheduling.
-            </p>
+                <p class="muted">
+                    Recently, I’ve been expanding into workflow automation using tools like n8n and GoHighLevel to
+                    streamline processes such as lead intake, email workflows, and scheduling.
+                </p>
 
-            <div class="stats">
-                <div class="stat">
-                    <div class="stat-num">5+</div>
-                    <div class="stat-label">Years in tech</div>
+                <p class="meta about-stack">Angular · APIs · Automation · UI · Data</p>
+
+                <div class="about-actions">
+                    <button class="btn pill" type="button" (click)="scrollTo('contact')">
+                        Let’s Talk <span aria-hidden="true">↗</span>
+                    </button>
+                    <button class="btn" type="button" (click)="scrollTo('projects')">See Projects</button>
                 </div>
-
-                <div class="stat">
-                    <div class="stat-num">2+</div>
-                    <div class="stat-label">Years in development</div>
-                </div>
-
-                <div class="stat">
-                    <div class="stat-num">20+</div>
-                    <div class="stat-label">Projects, tools, and systems worked on</div>
-                </div>
-            </div>
-
-            <div class="about-actions">
-                <button class="btn primary" type="button" (click)="scrollTo('contact')">Let’s talk →</button>
-                <button class="btn" type="button" (click)="scrollTo('projects')">See projects</button>
             </div>
         </div>
     </div>

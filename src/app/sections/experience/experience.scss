@@ -1,64 +1,73 @@
-.intro {
-    max-width: 70ch;
-    margin-bottom: 18px;
-}
-
-.experience-list {
+/* Editorial timeline: hairline rows, no boxes, mono dates right-aligned.
+   Full container width — titles left, dates at the far edge. */
+.timeline {
     display: flex;
     flex-direction: column;
-    gap: 16px;
 }
 
-.experience-card {
-    padding: 18px 20px;
+.timeline-row {
+    display: grid;
+    gap: 14px;
+    padding: 28px 0;
+    border-top: var(--hairline);
+
+    &:last-child {
+        border-bottom: var(--hairline);
+    }
 }
 
-.exp-header {
+.row-head {
     display: flex;
     justify-content: space-between;
     align-items: baseline;
-    gap: 12px;
-    margin-bottom: 4px;
+    gap: 20px;
 }
 
-.period {
-    font-size: 13px;
-    color: rgba(242, 245, 255, .65);
-    white-space: nowrap;
+.row-title {
+    font-size: var(--fs-4);
+    font-weight: 600;
+    letter-spacing: var(--ls-tight);
+    line-height: var(--lh-tight);
 }
 
 .company {
-    margin-bottom: 10px;
-    font-size: 14px;
+    color: var(--muted);
+    font-weight: 400;
+}
+
+.period {
+    white-space: nowrap;
+    flex: none;
 }
 
 .exp-bullets {
-    margin: 0;
+    margin: 4px 0 0;
     padding-left: 18px;
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 4px;
 }
 
 .exp-bullets li {
-    color: rgba(242, 245, 255, .85);
-    line-height: 1.5;
-    font-size: 14px;
+    color: var(--muted);
+    line-height: var(--lh-loose);
+    font-size: var(--fs-1);
 }
 
 .tech-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 12px;
+    gap: 6px;
 }
 
-.tech-tags span {
-    font-size: 11px;
-    padding: 4px 10px;
-    border-radius: 999px;
-    background: rgba(255, 255, 255, 0.06);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    color: rgba(242, 245, 255, .85);
-    letter-spacing: .02em;
+@media (max-width: 680px) {
+    .row-head {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+    }
+
+    .period {
+        white-space: normal;
+    }
 }
